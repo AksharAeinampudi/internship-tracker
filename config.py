@@ -13,6 +13,9 @@ GREENHOUSE_COMPANY_SLUGS = [
     "airbnb",
     "robinhood",
 ]
+LEVER_COMPANY_SLUGS = [
+    "traackr",
+]
 
 # --- Filtering ---
 TITLE_KEYWORDS = ["intern", "internship"]

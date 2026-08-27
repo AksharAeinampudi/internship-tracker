@@ -1,12 +1,12 @@
 from models import db, Posting
 from scraper import fetch_all_matching_postings
 from notifier import send_new_postings_email
-from config import GREENHOUSE_COMPANY_SLUGS
+from config import GREENHOUSE_COMPANY_SLUGS, LEVER_COMPANY_SLUGS
 
 
 def run_tracker_job(app) -> dict:
     with app.app_context():
-        matches = fetch_all_matching_postings(GREENHOUSE_COMPANY_SLUGS)
+        matches = fetch_all_matching_postings(GREENHOUSE_COMPANY_SLUGS, LEVER_COMPANY_SLUGS)
 
         newly_added = []
         for match in matches:
