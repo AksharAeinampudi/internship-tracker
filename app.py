@@ -47,8 +47,12 @@ def create_app():
     return app
 
 
+import os
+
 app = create_app()
 
-if __name__ == "__main__":
+if os.environ.get("RUN_SCHEDULER") == "true":
     start_scheduler(app)
+
+if __name__ == "__main__":
     app.run(debug=True)
