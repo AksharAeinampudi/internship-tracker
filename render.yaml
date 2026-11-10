@@ -1,0 +1,25 @@
+# Render blueprint: one free web service for the UI. The database is a free Neon
+# Postgres database and the scheduled scrape runs in GitHub Actions
+# (.github/workflows/scrape.yml); see "Deploy" in the README.
+# Secrets (sync: false) are typed into the Render dashboard, never committed.
+services:
+  - type: web
+    name: internship-tracker
+    runtime: python
+    plan: free
+    region: ohio # same AWS region as a Neon database in us-east-2
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 1 --threads 4 --timeout 120
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: DATABASE_URL
+        sync: false
+      # Only needed if you want an email when you press "Refresh now" on the site.
+      - key: SMTP_USERNAME
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: NOTIFY_TO_EMAIL
+        sync: false

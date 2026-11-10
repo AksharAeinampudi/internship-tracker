@@ -33,3 +33,12 @@ def run_tracker_job(app) -> dict:
                 db.session.commit()
 
         return {"scraped": len(matches), "new": len(newly_added)}
+
+
+if __name__ == "__main__":
+    # One scrape, then exit. Used by the scheduled GitHub Actions workflow
+    # (.github/workflows/scrape.yml) so the scrape doesn't depend on the web server
+    # being awake.
+    from app import create_app
+
+    print(f"[tracker_job] {run_tracker_job(create_app())}")
