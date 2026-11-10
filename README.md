@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/AksharAeinampudi/internship-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/AksharAeinampudi/internship-tracker/actions/workflows/ci.yml)
 
+**Live:** https://internship-tracker-g9ua.onrender.com (free Render instance: the first visit after it has been idle can take up to a minute)
+
 A Flask app that scrapes internship postings from companies' public **Greenhouse** and **Lever** job boards, stores them in a database, lets you track your application status per posting, and emails you when new matching postings show up.
 
 ## Why Greenhouse and Lever?
