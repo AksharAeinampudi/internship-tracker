@@ -1,0 +1,42 @@
+name: Scheduled scrape
+
+# Runs one scrape against the hosted database every 6 hours and emails new matches.
+# This replaces the in-process scheduler in production, because a free web service
+# sleeps when nobody is using it and its background thread sleeps with it.
+on:
+  schedule:
+    - cron: "17 */6 * * *" # every 6 hours (UTC), off the top of the hour
+  workflow_dispatch: # "Run workflow" button in the Actions tab
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      NOTIFY_TO_EMAIL: ${{ secrets.NOTIFY_TO_EMAIL }}
+    steps:
+      # Without a DATABASE_URL secret the job would scrape into a throwaway SQLite
+      # file, so skip instead of running (and instead of failing every 6 hours).
+      - name: Check that the database secret is set
+        if: env.DATABASE_URL == ''
+        run: echo "::notice::DATABASE_URL secret not set; skipping the scrape."
+
+      - uses: actions/checkout@v4
+        if: env.DATABASE_URL != ''
+
+      - uses: actions/setup-python@v5
+        if: env.DATABASE_URL != ''
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        if: env.DATABASE_URL != ''
+        run: pip install -r requirements.txt
+
+      - name: Scrape and email new postings
+        if: env.DATABASE_URL != ''
+        run: python tracker_job.py
