@@ -1,0 +1,21 @@
+[
+  {
+    "id": "a1b2c3",
+    "text": "Marketing Intern",
+    "hostedUrl": "https://jobs.lever.co/examplelever/a1b2c3",
+    "createdAt": 1761955200000,
+    "categories": {"location": "Boston, MA", "team": "Marketing", "commitment": "Internship"}
+  },
+  {
+    "id": "d4e5f6",
+    "text": "Account Executive",
+    "hostedUrl": "https://jobs.lever.co/examplelever/d4e5f6",
+    "createdAt": 1761955200000,
+    "categories": {"location": "Remote"}
+  },
+  {
+    "id": "g7h8i9",
+    "text": "Engineering Intern",
+    "hostedUrl": "https://jobs.lever.co/examplelever/g7h8i9"
+  }
+]

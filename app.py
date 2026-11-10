@@ -8,9 +8,11 @@ from scheduler import start_scheduler
 STATUS_OPTIONS = ["new", "applied", "interviewing", "rejected", "offer"]
 
 
-def create_app():
+def create_app(config_overrides: dict | None = None):
     app = Flask(__name__)
     app.config.from_object(config)
+    if config_overrides:
+        app.config.update(config_overrides)
     db.init_app(app)
 
     with app.app_context():

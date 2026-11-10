@@ -1,0 +1,33 @@
+{
+  "jobs": [
+    {
+      "id": 7001,
+      "title": "  Software Engineering Intern, Summer 2027 ",
+      "absolute_url": "https://boards.greenhouse.io/examplegh/jobs/7001",
+      "location": {"name": "San Francisco, CA"},
+      "updated_at": "2026-10-30T12:00:00-04:00"
+    },
+    {
+      "id": 7002,
+      "title": "Internal Audit Lead",
+      "absolute_url": "https://boards.greenhouse.io/examplegh/jobs/7002",
+      "location": {"name": "New York, NY"},
+      "updated_at": "2026-10-29T09:30:00-04:00"
+    },
+    {
+      "id": 7003,
+      "title": "Data Science Internship",
+      "absolute_url": "https://boards.greenhouse.io/examplegh/jobs/7003",
+      "location": null,
+      "updated_at": "2026-10-28T08:00:00-04:00"
+    },
+    {
+      "id": 7004,
+      "title": "Senior Backend Engineer",
+      "absolute_url": "https://boards.greenhouse.io/examplegh/jobs/7004",
+      "location": {"name": "Remote"},
+      "updated_at": "2026-10-27T08:00:00-04:00"
+    }
+  ],
+  "meta": {"total": 4}
+}
